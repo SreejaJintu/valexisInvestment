@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Valexis.Api/Valexis.Api.csproj" />
+  <Project Path="Valexis.Application/Valexis.Application.csproj" />
+  <Project Path="Valexis.Domain/Valexis.Domain.csproj" />
+  <Project Path="Valexis.Infrastructure/Valexis.Infrastructure.csproj" />
+</Solution>
