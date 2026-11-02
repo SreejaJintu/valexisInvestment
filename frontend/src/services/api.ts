@@ -1,7 +1,19 @@
 import axios from 'axios';
 
+// Get base URL from environment variable (supports both VITE_API_BASE_URL and VITE_API_URL)
+const rawBaseUrl = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL;
+
+// Normalize base URL to ensure it targets the backend /api prefix without double slashes or duplicated /api
+const getBaseUrl = () => {
+  if (rawBaseUrl && rawBaseUrl.trim() !== '') {
+    const cleanUrl = rawBaseUrl.trim().replace(/\/+$/, '');
+    return cleanUrl.endsWith('/api') ? cleanUrl : `${cleanUrl}/api`;
+  }
+  return '/api';
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: getBaseUrl(),
   headers: {
     'Content-Type': 'application/json',
   },
